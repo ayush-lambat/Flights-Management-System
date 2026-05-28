@@ -1,0 +1,15 @@
+package com.rbu.repo;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.rbu.entity.Flight;
+
+@Repository
+public interface FlightRepo extends JpaRepository<Flight, Integer> {
+    List<Flight> findByCarrier(String carrier);
+    List<Flight> findBySourceAndDestination(String source, String destination);
+    List<Flight> findByCostBetween(double min, double max);
+}
